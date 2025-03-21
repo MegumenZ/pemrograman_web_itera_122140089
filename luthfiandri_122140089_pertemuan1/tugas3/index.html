@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validasi</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .error { color: red; font-size: 14px; }
+        .success { color: green; font-size: 14px; }
+        input, button { display: block; margin: 10px 0; padding: 8px; width: 300px; }
+    </style>
+</head>
+<body>
+
+    <h2>Form Validasi</h2>
+    <form id="myForm">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama">
+        <span id="error-nama" class="error"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="error-email" class="error"></span>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="error-password" class="error"></span>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Mencegah form dari pengiriman default
+
+            let nama = document.getElementById("nama").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            let errors = validateForm(nama, email, password);
+
+            // Mengosongkan pesan error sebelumnya
+            document.getElementById("error-nama").textContent = "";
+            document.getElementById("error-email").textContent = "";
+            document.getElementById("error-password").textContent = "";
+            document.getElementById("result").textContent = "";
+
+            if (errors.length > 0) {
+                // Menampilkan error di masing-masing bidang input
+                errors.forEach(error => {
+                    if (error.includes("Nama")) {
+                        document.getElementById("error-nama").textContent = error;
+                    }
+                    if (error.includes("Email")) {
+                        document.getElementById("error-email").textContent = error;
+                    }
+                    if (error.includes("Password")) {
+                        document.getElementById("error-password").textContent = error;
+                    }
+                });
+            } else {
+                document.getElementById("result").textContent = "Form valid! Data berhasil dikirim.";
+                document.getElementById("result").className = "success";
+                document.getElementById("myForm").reset(); // Reset form setelah validasi sukses
+            }
+        });
+
+        function validateForm(nama, email, password) {
+            let errors = [];
+
+            // Validasi nama (harus lebih dari 3 karakter)
+            if (nama.length <= 3) {
+                errors.push("Nama harus lebih dari 3 karakter.");
+            }
+
+            // Validasi email dengan regex yang benar
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                errors.push("Email tidak valid.");
+            }
+
+            // Validasi password (minimal 8 karakter)
+            if (password.length < 8) {
+                errors.push("Password harus minimal 8 karakter.");
+            }
+
+            return errors;
+        }
+    </script>
+
+</body>
+</html>
