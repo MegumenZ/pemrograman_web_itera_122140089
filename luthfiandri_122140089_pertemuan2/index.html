@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal To-Do Dashboard</title>
+    <style>
+      :root {
+        --primary-color: #007bff;
+        --bg-color: #f1f3f5;
+        --card-color: #ffffff;
+        --text-color: #212529;
+        --success-color: #28a745;
+        --error-color: #dc3545;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-color);
+        margin: 0;
+        padding: 2rem;
+        color: var(--text-color);
+      }
+
+      .container {
+        max-width: 640px;
+        margin: auto;
+        background: var(--card-color);
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .input-group input,
+      .input-group button {
+        padding: 0.75rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+      }
+
+      .input-group input {
+        flex: 1;
+      }
+
+      .input-group input[type="date"] {
+        max-width: 160px;
+      }
+
+      button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .task {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f8f9fa;
+        border-left: 4px solid var(--primary-color);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.75rem;
+        transition: opacity 0.5s ease;
+      }
+
+      .task-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 0.25rem;
+      }
+
+      .task-content-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .task-content input[type="text"] {
+        border: none;
+        background: transparent;
+        width: 100%;
+        font-size: 1rem;
+        color: var(--text-color);
+      }
+
+      .deadline {
+        font-size: 0.85rem;
+        color: #868e96;
+      }
+
+      input[type="checkbox"] {
+        transform: scale(1.2);
+      }
+
+      .success-message,
+      .error-message {
+        text-align: center;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .success-message {
+        color: var(--success-color);
+      }
+
+      .error-message {
+        color: var(--error-color);
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Daftar Tugas Gweh</h1>
+      <div id="success" class="success-message"></div>
+      <div id="error" class="error-message"></div>
+      <div class="input-group">
+        <input type="text" id="new-task" placeholder="Tambah tugas baru..." />
+        <input type="date" id="new-deadline" />
+        <button onclick="addTask()">Tambah</button>
+      </div>
+      <div class="actions">
+        <button onclick="toggleSelectAll()" id="select-all-btn">
+          Pilih Semua
+        </button>
+        <button onclick="markSelectedComplete()">Selesai</button>
+      </div>
+      <div id="task-list"></div>
+    </div>
+
+    <script>
+      class Task {
+        constructor(id, content, deadline) {
+          this.id = id;
+          this.content = content;
+          this.deadline = deadline;
+        }
+      }
+
+      const taskListContainer = document.getElementById("task-list");
+      const inputField = document.getElementById("new-task");
+      const deadlineField = document.getElementById("new-deadline");
+      const successMessage = document.getElementById("success");
+      const errorMessage = document.getElementById("error");
+      const selectAllBtn = document.getElementById("select-all-btn");
+
+      let allSelected = false;
+
+      const getTasks = () => JSON.parse(localStorage.getItem("tasks")) || [];
+      const saveTasks = (tasks) =>
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+
+      const renderTasks = () => {
+        taskListContainer.innerHTML = "";
+        const tasks = getTasks();
+        const sortedTasks = tasks.sort(
+          (a, b) => new Date(a.deadline) - new Date(b.deadline)
+        );
+        sortedTasks.forEach((task) => {
+          const taskDiv = document.createElement("div");
+          taskDiv.className = "task";
+          taskDiv.id = `task-${task.id}`;
+
+          const taskContent = document.createElement("div");
+          taskContent.className = "task-content";
+
+          const row = document.createElement("div");
+          row.className = "task-content-row";
+
+          const check = document.createElement("input");
+          check.type = "checkbox";
+          check.className = "check-task";
+          check.dataset.id = task.id;
+
+          const taskInput = document.createElement("input");
+          taskInput.type = "text";
+          taskInput.value = task.content;
+          taskInput.onchange = (e) => editTask(task.id, e.target.value);
+
+          const deadlineText = document.createElement("div");
+          deadlineText.className = "deadline";
+          deadlineText.innerText = `Deadline: ${task.deadline}`;
+
+          row.appendChild(check);
+          row.appendChild(taskInput);
+
+          taskContent.appendChild(row);
+          taskContent.appendChild(deadlineText);
+
+          taskDiv.appendChild(taskContent);
+          taskListContainer.appendChild(taskDiv);
+        });
+      };
+
+      const addTask = () => {
+        const content = inputField.value.trim();
+        const deadline = deadlineField.value;
+        if (!content || !deadline) return;
+
+        const tasks = getTasks();
+        const newTask = new Task(Date.now(), content, deadline);
+        tasks.push(newTask);
+        saveTasks(tasks);
+        inputField.value = "";
+        deadlineField.value = "";
+        renderTasks();
+      };
+
+      const editTask = (id, newContent) => {
+        const tasks = getTasks();
+        const updatedTasks = tasks.map((task) =>
+          task.id === id ? { ...task, content: newContent } : task
+        );
+        saveTasks(updatedTasks);
+        renderTasks();
+      };
+
+      const markSelectedComplete = () => {
+        const checks = document.querySelectorAll(".check-task:checked");
+        const selectedIds = Array.from(checks).map((c) =>
+          parseInt(c.dataset.id)
+        );
+        if (selectedIds.length === 0) {
+          errorMessage.innerText = "Woi, belum ada tugas yang dipilih!!!";
+          setTimeout(() => (errorMessage.innerText = ""), 3000);
+          return;
+        }
+
+        successMessage.innerText = "Alhamdulillah, tugas selesai!";
+        errorMessage.innerText = "";
+        setTimeout(() => {
+          const tasks = getTasks().filter(
+            (task) => !selectedIds.includes(task.id)
+          );
+          saveTasks(tasks);
+          renderTasks();
+          successMessage.innerText = "";
+        }, 3000);
+      };
+
+      const toggleSelectAll = () => {
+        const checkboxes = document.querySelectorAll(".check-task");
+        allSelected = !allSelected;
+        checkboxes.forEach((c) => (c.checked = allSelected));
+        selectAllBtn.innerText = allSelected
+          ? "Batal Pilih Semua"
+          : "Pilih Semua";
+      };
+
+      (async () => {
+        await new Promise((resolve) => setTimeout(resolve, 100));
+        renderTasks();
+      })();
+    </script>
+  </body>
+</html>
