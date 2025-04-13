@@ -32,8 +32,6 @@ Aplikasi **Personal Dashboard** ini dirancang khusus untuk kebutuhan mahasiswa d
 
 ![alt text](https://i.imgur.com/Y43Tty0.png)
 
-> Ganti link `placeholder` di atas dengan screenshot asli dari aplikasi kamu saat sudah dideploy atau dijalankan lokal.
-
 ---
 
 ## 📁 Cara Menjalankan
