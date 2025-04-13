@@ -31,11 +31,3 @@ Web **Personal Dashboard** ini dirancang khusus untuk kebutuhan mahasiswa dan sa
 ## 📷 Screenshot
 
 ![alt text](https://i.imgur.com/Y43Tty0.png)
-
----
-
-## 📁 Cara Menjalankan
-
-1. Cukup buka file HTML ini di browser (offline atau online).
-2. Tidak perlu setup tambahan.
-3. Semua data akan disimpan di browser (localStorage).
