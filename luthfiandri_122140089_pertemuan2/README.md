@@ -1,10 +1,10 @@
-# 📚 Personal To-Do Dashboard untuk Gweh
+# Personal To-Do Dashboard untuk Gweh
 
-Aplikasi **Personal Dashboard** ini dirancang khusus untuk kebutuhan mahasiswa dan saya sendiri dalam mengelola daftar tugas. Kamu dapat menambahkan, mengedit, menandai selesai, serta menghapus tugas secara interaktif. Tugas disimpan secara lokal menggunakan `localStorage`, sehingga data tetap aman meskipun halaman di-refresh.
+Web **Personal Dashboard** ini dirancang khusus untuk kebutuhan mahasiswa dan saya sendiri dalam mengelola daftar tugas. Kamu dapat menambahkan, mengedit, menandai selesai, serta menghapus tugas secara interaktif. Tugas disimpan secara lokal menggunakan `localStorage`, sehingga data tetap aman meskipun halaman di-refresh.
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
 - ✅ Tambah tugas dengan **judul** dan **tanggal deadline**
 - ✏️ Edit tugas langsung dari tampilan
@@ -16,7 +16,7 @@ Aplikasi **Personal Dashboard** ini dirancang khusus untuk kebutuhan mahasiswa d
 
 ---
 
-## 🚀 Fitur ES6+ yang Diimplementasikan
+## Fitur ES6+ yang Diimplementasikan
 
 | Fitur ES6+             | Implementasi                                                                  |
 | ---------------------- | ----------------------------------------------------------------------------- |
