@@ -30,7 +30,7 @@ Aplikasi **Personal Dashboard** ini dirancang khusus untuk kebutuhan mahasiswa d
 
 ## 📷 Screenshot
 
-![screenshot]([https://via.placeholder.com/800x400.png?text=Personal+To-Do+Dashboard](https://drive.google.com/file/d/1KJJSNM4wAQ5VNjzs3x-DpcaB3hfYHkVc/view?usp=sharing))
+![screenshot](https://imgur.com/a/Zm2zg76)
 
 > Ganti link `placeholder` di atas dengan screenshot asli dari aplikasi kamu saat sudah dideploy atau dijalankan lokal.
 
