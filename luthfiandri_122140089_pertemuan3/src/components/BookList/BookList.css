@@ -1,0 +1,41 @@
+.book-list {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.book-item {
+  background-color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-item h3 {
+  margin: 0;
+  color: #333;
+}
+
+.book-item button {
+  margin-left: 10px;
+}
+
+.book-item button:nth-child(1) {
+  background-color: #dc3545;
+}
+
+.book-item button:nth-child(1):hover {
+  background-color: #c82333;
+}
+
+.book-item button:nth-child(2) {
+  background-color: #ffc107;
+}
+
+.book-item button:nth-child(2):hover {
+  background-color: #e0a800;
+}
