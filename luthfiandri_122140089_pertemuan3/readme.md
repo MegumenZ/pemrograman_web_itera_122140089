@@ -1,30 +1,29 @@
 
-# 📚 Aplikasi Manajemen Buku Pribadi
+# Aplikasi Manajemen Buku Pribadi
 
 Aplikasi berbasis web untuk mencatat dan mengelola daftar buku pribadi, seperti buku yang dimiliki, sedang dibaca, atau ingin dibeli.
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
-- ➕ Tambah buku baru (judul, penulis, dan status: milik, sedang dibaca, atau ingin dibeli)
-- 🔄 Edit dan hapus data buku
-- 🔍 Filter buku berdasarkan status
-- 🔎 Pencarian buku berdasarkan judul
-- 💾 Menyimpan data di `localStorage`
-- 📊 Halaman statistik: total buku, per kategori, dan lainnya
+- Tambah buku baru (judul, penulis, dan status: milik, sedang dibaca, atau ingin dibeli)
+- Edit dan hapus data buku
+- Filter buku berdasarkan status
+- Pencarian buku berdasarkan judul
+- Menyimpan data di `localStorage`
+- Halaman statistik: total buku, per kategori, dan lainnya
 
 ---
 
-## 🚀 Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
-- ⚛️ React (Vite)
-- 🎨 TailwindCSS untuk styling
-- 📦 Context API untuk manajemen state global
-- 🔁 React Router untuk navigasi antar halaman
-- 🔧 Custom Hooks: `useLocalStorage`, `useBookStats`
-- 🧪 React Testing Library untuk unit testing
-- 🧭 PropTypes untuk pengecekan tipe data props
+- React
+- Context API untuk manajemen state global
+- React Router untuk navigasi antar halaman
+- Custom Hooks: `useLocalStorage`, `useBookStats`
+- React Testing Library untuk unit testing
+- PropTypes untuk pengecekan tipe data props
 
 ---
 
@@ -96,38 +95,17 @@ Telah dibuat minimal **5 unit test** menggunakan **React Testing Library**:
 npm run test
 ```
 
-**Contoh yang diuji:**
-- Penambahan buku
-- Filter status
-- Validasi form
-- Custom hook `useLocalStorage`
-- Komponen `BookList` dan `BookForm`
-
 ---
 
-## 🔍 Penanganan Error
+## Penanganan Error
 
 - Form input akan memunculkan pesan error jika judul atau penulis kosong.
 - Sistem validasi dilakukan sebelum data disimpan.
 
 ---
 
-## 📝 Catatan
+## Catatan
 
 - Aplikasi menyimpan data buku ke **localStorage**, sehingga tidak hilang saat refresh.
 - UI menggunakan **tema biru** dengan gaya bersih dan modern, terinspirasi dari desain situs Perpusnas.
-
----
-
-## 🙌 Kontributor
-
-- Andre - 122140089  
-- Universitas Teknokrat Indonesia  
-- Mata Kuliah: Pemrograman Web Semester 6
-
----
-
-## 📄 Lisensi
-
-Proyek ini hanya digunakan untuk kebutuhan tugas akademik.
 
