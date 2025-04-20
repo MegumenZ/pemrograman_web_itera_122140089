@@ -52,9 +52,9 @@ src/
 
 ## 📸 Screenshot Antarmuka
 
-![Beranda Aplikasi](![image](https://github.com/user-attachments/assets/7ddb2663-0072-439f-aa7e-60dbde56fcd7)
+![Beranda Aplikasi](https://i.imgur.com/6oV6ZNA.png)
 )
-![Statistik Buku](![image](https://github.com/user-attachments/assets/a7223961-5d8c-4aeb-868b-06497e572097)
+![Statistik Buku](https://i.imgur.com/b7qOKLb.png)
 )
 
 ---
