@@ -52,8 +52,10 @@ src/
 
 ## 📸 Screenshot Antarmuka
 
-![Beranda Aplikasi](./screenshot-home.png)
-![Statistik Buku](./screenshot-stats.png)
+![Beranda Aplikasi](![image](https://github.com/user-attachments/assets/7ddb2663-0072-439f-aa7e-60dbde56fcd7)
+)
+![Statistik Buku](![image](https://github.com/user-attachments/assets/a7223961-5d8c-4aeb-868b-06497e572097)
+)
 
 ---
 
