@@ -15,6 +15,5 @@ def main(global_config, **settings):
         config.add_route('mahasiswa', '/mahasiswa')
         config.add_route('api_mahasiswa', '/api/mahasiswa')
         config.add_route('api_mahasiswa_detail', '/api/mahasiswa/{id}')
-
         config.scan()
     return config.make_wsgi_app()
